@@ -8,6 +8,8 @@ import { Question } from "../components/Question";
 import { RoomCode } from "../components/RoomCode";
 import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
+import { useTheme } from "../hooks/useTheme";
+
 import { database } from "../services/firebase";
 
 import "../styles/room.scss";
@@ -18,6 +20,7 @@ type RoomParams = {
 
 export function Room() {
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState("");
   const roomId = params.id;
@@ -66,11 +69,12 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
           <RoomCode code={roomId} />
+          <Button onClick={toggleTheme}>{theme}</Button>
         </div>
       </header>
 

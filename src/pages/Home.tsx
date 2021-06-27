@@ -63,9 +63,8 @@ export function Home() {
       </aside>
       <main>
         <div className="main-content">
-          <button onClick={toggleTheme}>Toggle</button>
-
           <img src={logoImg} alt="Letmeask" />
+
           <button onClick={handleCreateRoom} className="create-room">
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
@@ -79,6 +78,8 @@ export function Home() {
               value={roomCode}
               />
             <Button type="submit">Entrar na sala</Button>
+
+            <Button onClick={toggleTheme}>{theme}</Button>
           </form>
         </div>
       </main>
